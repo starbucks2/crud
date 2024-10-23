@@ -44,7 +44,7 @@ if(isset($_GET['logout'])){
             echo '<img src="uploaded_img/'.$fetch['image'].'">';
          }
       ?>
-      <h3>Hello,<?php echo $fetch['name']; ?></h3>
+      <h3>Hello Admin,<?php echo $fetch['name']; ?></h3>
       <a href="update_profile.php" class="btn">update profile</a>
       <a href="home.php?logout=<?php echo $admin_id; ?>" class="delete-btn">logout</a>
      <a href="crud.php"  class="btn">CRUD WITH EMAIL NOTIFICATION</a>
