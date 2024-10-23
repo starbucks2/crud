@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($select) > 0){
       $row = mysqli_fetch_assoc($select);
       $_SESSION['user_id'] = $row['id'];
-      header('location:home.php');
+      header('location:home1.php');
    }else{
       $message[] = 'incorrect email or password!';
    }
@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post" enctype="multipart/form-data">
-      <h3>login now</h3>
+      <h3>user login </h3>
       <?php
       if(isset($message)){
          foreach($message as $message){
@@ -47,12 +47,21 @@ if(isset($_POST['submit'])){
          }
       }
       ?>
-      <input type="email" name="email" placeholder="enter email" class="box" required>
-      <input type="password" name="password" placeholder="enter password" class="box" required>
+      <input type="email" name="email" placeholder="Enter Email" class="box" required>
+      <input type="password" name="password" id="pwd" placeholder="Enter Password" class="box" required>
+      <input type ="checkbox" id="chk"> Show Password  <br>
       <input type="submit" name="submit" value="login now" class="btn">
-      <p>don't have an account? <a href="register.php">register now</a></p>
+      <br><a href="admin.php">Admin Login</a>
+      <p>Don't Have an Account? <a href="register.php">Register now</a></p>
    </form>
+   <script>
+      const pwd = document.getElementById('pwd');
+      const chk = document.getElementById('chk');
 
+      chk.onchange = function(e) {
+         pwd.type = chk.checked ?"text":"password";
+      };
+   </script>
 </div>
 
 </body>

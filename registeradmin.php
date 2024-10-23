@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
    $image_tmp_name = $_FILES['image']['tmp_name'];
    $image_folder = 'uploaded_img/'.$image;
 
-   $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+   $select = mysqli_query($conn, "SELECT * FROM `admin` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
    if(mysqli_num_rows($select) > 0){
       $message[] = 'user already exist'; 
@@ -23,14 +23,14 @@ if(isset($_POST['submit'])){
       }elseif($image_size > 2000000){
          $message[] = 'image size is too large!';
       }else{
-         $insert = mysqli_query($conn, "INSERT INTO `users`(name, email, password, image) VALUES('$name', '$email', '$pass', '$image')") or die('query failed');
+         $insert = mysqli_query($conn, "INSERT INTO `admin`(name, email, password, image) VALUES('$name', '$email', '$pass', '$image')") or die('query failed');
 
          if($insert){
             move_uploaded_file($image_tmp_name, $image_folder);
             $message[] = 'registered successfully!';
-            header('location:index.php');
+            header('location:admin.php');
          }else{
-            $message[] = 'registration failed!';
+            $message[] = 'Registration failed!';
          }
       }
    }
@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post" enctype="multipart/form-data">
-      <h3>register now</h3>
+      <h3>Add Admin</h3>
       <?php
       if(isset($message)){
          foreach($message as $message){
@@ -68,10 +68,10 @@ if(isset($_POST['submit'])){
       <input type="email" name="email" placeholder="Enter Email" class="box" required>
       <input type="password" name="password" id="pwd" placeholder="Enter Password" class="box" required>
       <input type="password" name="cpassword" id="cpwd" placeholder="Confirm Password" class="box" required>
-            <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
-            <input type ="checkbox" id="chk"> Show Password 
-      <input type="submit" name="submit" value="Register now" class="btn">
-      <p>already have an account? <a href="index.php">Login now</a></p>
+      <input type="checkbox" id="chk"> Show Password
+      <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
+      <input type="submit" name="submit" value="Register Now" class="btn">
+      <a href="crud.php"><p>Admin Panel</p></a>
    </form>
    <script>
       const pwd = document.getElementById('pwd');
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
          cpwd.type = chk.checked ?"text":"password";
       };
    </script>
-
+   
 </div>
 
 </body>

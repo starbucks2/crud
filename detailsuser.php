@@ -1,11 +1,11 @@
 <?php
-  include 'action.php';
+  include 'actions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CRUD WITH EMAIL NOTIFICATION</title>
+  <title>CRUD WITH EMAIL & SMS NOTIFICATION</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
   <script type='text/javascript' src='scripts/simple.js'></script>
  
@@ -59,7 +59,7 @@
       
       </div>
       <center>
-        <a href="crud.php"> <p> Back</p></a>
+        <a href="cruduser.php"> <p> Back</p></a>
       </center>
     </div>
 </div>

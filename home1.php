@@ -2,16 +2,16 @@
 
 include 'config.php';
 session_start();
-$admin_id = $_SESSION['admin_id'];
+$user_id = $_SESSION['user_id'];
 
-if(!isset($admin_id)){
-   header('location:admin.php');
+if(!isset($user_id)){
+   header('location:index.php');
 };
 
 if(isset($_GET['logout'])){
-   unset($admin_id);
+   unset($user_id);
    session_destroy();
-   header('location:admin.php');
+   header('location:index.php');
 }
 
 ?>
@@ -22,7 +22,7 @@ if(isset($_GET['logout'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Home</title>
+   <title>home</title>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
@@ -34,7 +34,7 @@ if(isset($_GET['logout'])){
 
    <div class="profile">
       <?php
-         $select = mysqli_query($conn, "SELECT * FROM `admin` WHERE id = '$admin_id'") or die('query failed');
+         $select = mysqli_query($conn, "SELECT * FROM `users` WHERE id = '$user_id'") or die('query failed');
          if(mysqli_num_rows($select) > 0){
             $fetch = mysqli_fetch_assoc($select);
          }
@@ -46,9 +46,9 @@ if(isset($_GET['logout'])){
       ?>
       <h3>Hello,<?php echo $fetch['name']; ?></h3>
       <a href="update_profile.php" class="btn">update profile</a>
-      <a href="home.php?logout=<?php echo $admin_id; ?>" class="delete-btn">logout</a>
-     <a href="crud.php"  class="btn">CRUD WITH EMAIL NOTIFICATION</a>
-      <p>New <a href="admin.php">Login</a> or <a href="register.php">Register</a></p>
+      <a href="index.php?logout=<?php echo $user_id; ?>" class="delete-btn">logout</a>
+     <a href="cruduser.php"  class="btn">CRUD WITH EMAIL NOTIFICATION</a>
+      <p>New <a href="index.php">Login</a> or <a href="register.php">Register</a></p>
       
 
    </div>

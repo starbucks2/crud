@@ -1,5 +1,5 @@
 <?php
-  include 'action.php';
+  include 'actions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,41 +35,6 @@
             <?php } unset($_SESSION['response']); ?>
         </div>
     </div>
-     
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                Add Record
-              </div>
-              <div class="card-body">
-                <form action="action.php" method="post" enctype="multipart/form-data">
-                  <input type="hidden" name="id" value="<?php echo  $id; ?>">
-                  <div class="mb-3">
-                    <input type="text" name="Fullname" value="<?php echo  $Fullname; ?>" class="form-control" placeholder="Enter FullName" required>
-                  </div>
-                  <div class="mb-3">
-                    <input type="email" name="Email" value="<?php echo  $Email; ?>" class="form-control" placeholder="Enter E-mail" required>
-                  </div>
-                  <div class="mb-3">
-                    <input type="tel" name="Contact" value="<?php echo  $Contact; ?>" class="form-control" placeholder="Enter Contact" required>
-                  </div>
-                  <div class="mb-3">
-                    <input type="hidden" name="oldimage" value="<?php echo  $Photo; ?>">
-                    <input type="file" name="image" class="custom-file">
-                    <img src="<?php echo  $photo; ?>" width="120" class="img-thumbnail">
-                  </div>
-                  <div class="mb-3">
-                    <?php if ($update == true) { ?>
-                    <input type="submit" name="update" class="btn btn-success btn-block" value="Update Record">
-                    <?php } else { ?>
-                    <input type="submit" name="add" class="btn btn-primary btn-block" value="Add Record">
-                    <?php } ?>
-                  </div>
-                </form>
-              </div>
-            </div>
-        </div>
         <div class="col-md-8">
             <?php
               $query = 'SELECT * FROM crud';
@@ -102,9 +67,8 @@
                   <td><?php echo  $row['Email']; ?></td>
                   <td><?php echo  $row['Contact']; ?></td>
                   <td>
-                  <a href="index.php?edit=<?php echo  $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
-                    <br><a href="details.php?details=<?php echo  $row['id']; ?>" class="btn btn-primary btn-sm">Details</a> |
-                    <a href="action.php?delete=<?php echo  $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want delete this record?');">Delete</a> |
+                  <a href="editcrud.php?edit=<?php echo  $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
+                    <br><a href="detailsuser.php?details=<?php echo  $row['id']; ?>" class="btn btn-primary btn-sm">Details</a> | |
                     <button class="btn btn-sm btn-flat btn-success" id ="printButton"onclick="window.print()">Print</button>
                   </td>
                 </tr>
@@ -125,10 +89,7 @@
   
 </script>
 <center>
-<a href="registeradmin.php"><h2>Add Admin</h2></a>
-    <a href="admin.php"><h2>Log Out</h2></a>
-    <a href="gmail.php"><h2>Send Email</h2></a>
-    
+    <a href="index.php"><h2>Log Out</h2></a>
 </center>
 </body>
 </html>

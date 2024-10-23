@@ -1,32 +1,99 @@
 <?php
-  include 'action.php';
+  include 'actions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CRUD WITH EMAIL  NOTIFICATION</title>
+  <title>CRUD WITH EMAIL NOTIFICATION</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
-  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+ 
+    
   <style>
-    @media print{
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+  background-color: #9933cc;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+
+@media pirnt{
   #printButton{
     display: none;
    
   }
 }
-  </style>
+</style>
 </head>
 <body>
   <center>
-<img src="src.jfif" width="70px" height="70px">	
+<img src="hacker.jpg" width="70px" height="70px">	
 </center>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h3 class="text-center text-dark mt-2">CRUD WITH EMAIL NOTIFICATION</h3>
+            <h3 class="text-center text-dark mt-2">CRUD WITH EMAIL  NOTIFICATION</h3>
             <hr>
             <?php if (isset($_SESSION['response'])) { ?>
             <div class="alert alert-<?php echo  $_SESSION['res_type']; ?> alert-dismissible text-center">
@@ -43,10 +110,10 @@
                 Add Record
               </div>
               <div class="card-body">
-                <form action="action.php" method="post" enctype="multipart/form-data">
+                <form action="actions.php" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="id" value="<?php echo  $id; ?>">
                   <div class="mb-3">
-                    <input type="text" name="Fullname" value="<?php echo  $Fullname; ?>" class="form-control" placeholder="Enter FullName" required>
+                    <input type="text" name="Fullname" value="<?php echo  $Fullname; ?>" class="form-control" placeholder="Enter Fullname" required>
                   </div>
                   <div class="mb-3">
                     <input type="email" name="Email" value="<?php echo  $Email; ?>" class="form-control" placeholder="Enter E-mail" required>
@@ -57,7 +124,7 @@
                   <div class="mb-3">
                     <input type="hidden" name="oldimage" value="<?php echo  $Photo; ?>">
                     <input type="file" name="image" class="custom-file">
-                    <img src="<?php echo  $photo; ?>" width="120" class="img-thumbnail">
+                    <img src="<?php echo  $Photo; ?>" width="120" class="img-thumbnail">
                   </div>
                   <div class="mb-3">
                     <?php if ($update == true) { ?>
@@ -87,10 +154,9 @@
                 <tr>
                   <th>#</th>
                   <th>Image</th>
-                  <th>Fullname</th>
+                  <th>FullName</th>
                   <th>Email</th>
                   <th>Contact</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -102,13 +168,14 @@
                   <td><?php echo  $row['Email']; ?></td>
                   <td><?php echo  $row['Contact']; ?></td>
                   <td>
-                  <a href="index.php?edit=<?php echo  $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
-                    <br><a href="details.php?details=<?php echo  $row['id']; ?>" class="btn btn-primary btn-sm">Details</a> |
-                    <a href="action.php?delete=<?php echo  $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want delete this record?');">Delete</a> |
-                    <button class="btn btn-sm btn-flat btn-success" id ="printButton"onclick="window.print()">Print</button>
+                  <a href="editcrud.php?edit=<?php echo  $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
+                    <a href="detailsusers.php?details=<?php echo  $row['id']; ?>" class="btn btn-primary btn-sm">Details</a> 
+                   
                   </td>
                 </tr>
                 <?php } ?>
+                
+                
               </tbody>
             </table>
             </div>
@@ -125,10 +192,10 @@
   
 </script>
 <center>
-<a href="registeradmin.php"><h2>Add Admin</h2></a>
     <a href="admin.php"><h2>Log Out</h2></a>
-    <a href="gmail.php"><h2>Send Email</h2></a>
-    
+    <a href ="gmail.php"><h2>Email</h2></a>
+    <a href="registeradmin.php"><h2>Add Admin </h2></a>
+ 
 </center>
 </body>
 </html>
