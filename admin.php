@@ -49,6 +49,7 @@ if(isset($_POST['submit'])){
       ?>
       <input type="email" name="email" placeholder="Enter Email" class="box" required>
       <input type="password" name="password" id="pwd" placeholder="Enter Password" class="box" required>
+      <input type ="checkbox" id="chk"> Show Password
       <br><input type="submit" name="submit" value="login now" class="btn">
     <br><br><a href="index.php">User Login </a>
    </form>
