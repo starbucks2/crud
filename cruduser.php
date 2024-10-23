@@ -90,6 +90,7 @@
 </script>
 <center>
     <a href="index.php"><h2>Log Out</h2></a>
+    <a href="gmail.php"><h2>Send Email</h2></a>
 </center>
 </body>
 </html>

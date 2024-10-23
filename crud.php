@@ -102,7 +102,7 @@
                   <td><?php echo  $row['Email']; ?></td>
                   <td><?php echo  $row['Contact']; ?></td>
                   <td>
-                  <a href="index.php?edit=<?php echo  $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
+                  <a href="crud.php?edit=<?php echo  $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
                     <br><a href="details.php?details=<?php echo  $row['id']; ?>" class="btn btn-primary btn-sm">Details</a> |
                     <a href="action.php?delete=<?php echo  $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want delete this record?');">Delete</a> |
                     <button class="btn btn-sm btn-flat btn-success" id ="printButton"onclick="window.print()">Print</button>

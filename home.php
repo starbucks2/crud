@@ -48,7 +48,7 @@ if(isset($_GET['logout'])){
       <a href="update_profile.php" class="btn">update profile</a>
       <a href="home.php?logout=<?php echo $admin_id; ?>" class="delete-btn">logout</a>
      <a href="crud.php"  class="btn">CRUD WITH EMAIL NOTIFICATION</a>
-      <p>New <a href="admin.php">Login</a> or <a href="register.php">Register</a></p>
+   
       
 
    </div>
